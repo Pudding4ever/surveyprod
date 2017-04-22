@@ -4,7 +4,6 @@ module.exports = function (server, db) {
 
     server.post('/api/v1/bucketList/auth/register', function (req, res, next) {
         console.log ("register post called");
-        console.log (req, res, next);
         var user = req.params;
         console.log (user);
         pwdMgr.cryptPassword(user.password, function (err, hash) {
