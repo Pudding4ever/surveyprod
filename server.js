@@ -9,6 +9,7 @@ server.use(restify.queryParser());
 server.use(restify.bodyParser());
 server.use(morgan('dev')); // LOGGER
 
+
 // CORS
 server.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");

@@ -12,7 +12,7 @@ module.exports = function (server, db) {
         var user = req.params;
         pwdMgr.cryptPassword(user.password, function (err, hash) {
             user.password = hash;
-            db.appUsers.insert(user,
+            db.users.insert(user,
                 function (err, dbUser) {
                     if (err) { // duplicate key error
                         if (err.code == 11000) /* http://www.mongodb.org/about/contributors/error-codes/*/ {
@@ -46,7 +46,7 @@ module.exports = function (server, db) {
                 error: "Invalid Credentials"
             }));
         }
-        db.appUsers.findOne({
+        db.users.findOne({
             email: req.params.email
         }, function (err, dbUser) {
 
