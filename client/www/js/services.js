@@ -1,6 +1,6 @@
 angular.module('bucketList.services', [])
     .factory('API', function ($rootScope, $http, $ionicLoading, $window) {
-       var base = "http://surveytestcomp308.herokuapp.com";
+       var base = "http://bucketlistapplication.herokuapp.com";
         $rootScope.show = function (text) {
             $rootScope.loading = $ionicLoading.show({
                 content: text ? text : 'Loading',
@@ -64,7 +64,7 @@ angular.module('bucketList.services', [])
                 });
             },
             getOne: function (id, email) {
-                return $http.get(base+'/api/v1/bucketList/data/item/' + id, {
+                return $http.get(base+'/api/v1/bucketList/data/list/' + id, {
                     method: 'GET',
                     params: {
                         token: email
