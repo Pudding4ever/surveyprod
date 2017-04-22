@@ -1,7 +1,7 @@
 var restify     =   require('restify');
 var mongojs     =   require('mongojs');
 var	morgan  	= 	require('morgan');
-var db          =   mongojs(' mongodb://admin:admin123@dbh36.mongolab.com:27367/bucketlistapp', ['users','bucketLists']);
+var db          =   mongojs('mongodb://test:test@ds145299.mlab.com:45299/testdbformidterm', ['users','bucketLists']);
 var server      =   restify.createServer();
 
 server.use(restify.acceptParser(server.acceptable));
