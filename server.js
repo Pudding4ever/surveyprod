@@ -5,6 +5,9 @@ var db          =   mongojs('mongodb://test:test@ds145299.mlab.com:45299/testdbf
 db.open();
 var server      =   restify.createServer();
 
+var manageUsers =   require('./auth/manageUser')(server, db);
+var manageLists =   require('./list/manageList')(server, db);
+
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
 server.use(restify.bodyParser());
@@ -23,5 +26,3 @@ server.listen(process.env.PORT || 9804, function () {
     console.log("Server started @ ", process.env.PORT || 9804);
 });
 
-var manageUsers =   require('./auth/manageUser')(server, db);
-var manageLists =   require('./list/manageList')(server, db);
