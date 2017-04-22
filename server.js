@@ -4,8 +4,8 @@ var mongojs     =   require('mongojs');
 var morgan  	=   require('morgan');
 var db          =   mongojs('mongodb://test:test@ds145299.mlab.com:45299/testdbformidterm', ['appUsers','bucketLists']);
 var server      =   restify.createServer();
-var manageUsers = require('auth/manageUser')(server, db);
-var manageLists = require('list/manageList')(server, db);
+var manageUsers = require('./auth/manageUser')(server, db);
+var manageLists = require('./list/manageList')(server, db);
 
 
 
