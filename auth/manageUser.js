@@ -4,15 +4,11 @@ module.exports = function (server, db) {
 
     server.post('/api/v1/bucketList/auth/register', function (req, res, next) {
         var user = req.params;
-        debug.log("test");
         pwdMgr.cryptPassword(user.password, function (err, hash) {
-            
-            debug.log("test2");
-            
             user.password = hash;
             db.users.insert(user,
                 function (err, dbUser) {
-                    if (err) { debug.log("error!");// duplicate key error
+                    if (err) { // duplicate key error
                         if (err.code == 11000) /* http://www.mongodb.org/about/contributors/error-codes/*/ {
                             res.writeHead(400, {
                                 'Content-Type': 'application/json; charset=utf-8'
