@@ -36,7 +36,7 @@ module.exports = function (server, db) {
         return next();
     });
 
-db.appUsers.findOne({
+db.users.findOne({
 email: req.params.email
 }, function (err, dbUser) {
 if(!dbUser){//if the database finds no email, it will return null
