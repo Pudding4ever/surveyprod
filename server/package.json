@@ -1,0 +1,24 @@
+{
+  "name": "surveytest",
+  "version": "1.0.1",
+  "description": "comp 308 final project daniel kc and jason pearson",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+ "engines": {
+    "node": "0.10.x"
+  },
+
+
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "mongo": "^0.1.0",
+    "mongodb": "^2.2.26",
+    "mongojs": "^2.4.0",
+    "morgan": "^1.8.1",
+    "restify": "^4.3.0"
+  }
+}
