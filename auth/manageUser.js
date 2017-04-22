@@ -36,16 +36,15 @@ module.exports = function (server, db) {
         return next();
     });
 
-    server.post('/api/v1/bucketList/auth/login', function (req, res, next) {
-        var user = req.params;
-        if (user.email.trim().length == 0 || user.password.trim().length == 0) {
-            res.writeHead(403, {
-                'Content-Type': 'application/json; charset=utf-8'
-            });
-            res.end(JSON.stringify({
-                error: "Invalid Credentials"
-            }));
-        }
+db.appUsers.findOne({
+email: req.params.email
+}, function (err, dbUser) {
+if(!dbUser){//if the database finds no email, it will return null
+res.writeHead(403, contentTypeTipo);
+res.end(JSON.stringify({
+error: 'Invalid credentials. User not found.'
+}));
+}
         db.users.findOne({
             email: req.params.email
         }, function (err, dbUser) {
