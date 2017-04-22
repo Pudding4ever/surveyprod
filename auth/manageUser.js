@@ -4,11 +4,15 @@ module.exports = function (server, db) {
 
     server.post('/api/v1/bucketList/auth/register', function (req, res, next) {
         var user = req.params;
+        debug.log("test");
         pwdMgr.cryptPassword(user.password, function (err, hash) {
+            
+            debug.log("test2");
+            
             user.password = hash;
             db.users.insert(user,
                 function (err, dbUser) {
-                    if (err) { // duplicate key error
+                    if (err) { debug.log("error!");// duplicate key error
                         if (err.code == 11000) /* http://www.mongodb.org/about/contributors/error-codes/*/ {
                             res.writeHead(400, {
                                 'Content-Type': 'application/json; charset=utf-8'
@@ -43,7 +47,7 @@ module.exports = function (server, db) {
 db.users.findOne({
 email: req.params.email
 }, function (err, dbUser) {
-if(!dbUser){//if the database finds no email, it will return null, but any falsey will also mean something's amiss
+if(!dbUser){//if the database finds no email
 res.writeHead(403, contentTypeTipo);
 res.end(JSON.stringify({
 error: 'Invalid credentials. User not found.'
