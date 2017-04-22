@@ -1,12 +1,6 @@
 var pwdMgr = require('./managePasswords');
 
 module.exports = function (server, db) {
-    // unique index
-    db.users.ensureIndex({
-        email: 1
-    }, {
-        unique: true
-    })
 
     server.post('/api/v1/bucketList/auth/register', function (req, res, next) {
         var user = req.params;
