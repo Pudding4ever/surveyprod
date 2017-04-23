@@ -5,10 +5,10 @@ module.exports = function (server, db) {
     server.post('/api/v1/bucketList/auth/register', function (req, res, next) {
         console.log ("register post called");
         var user = req.params;
-        console.log (user);
+        console.log (user.name, user.password, user.email);
         pwdMgr.cryptPassword(user.password, function (err, hash) {
             user.password = hash;
-            db.users.insert(user,
+            db.users.create(user,
                 function (err, dbUser) {
                     if (err) { // duplicate key error
                         if (err.code == 11000) /* http://www.mongodb.org/about/contributors/error-codes/*/ {
